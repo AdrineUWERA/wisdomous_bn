@@ -13,9 +13,7 @@ const emailSchema = Joi.string()
 
 const passwordSchema = Joi.string()
   .required()
-  .pattern(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0123456789])(?=.*[@$!%*?&])[A-Za-z0123456789@$!%*?&]{8,}$/
-  )
+  .min(6)
   .messages(errorMessage("Password"));
 
 const LoginSchema = Joi.object().keys({
@@ -29,8 +27,4 @@ const SignUpSchema = Joi.object().keys({
   password: passwordSchema,
 });
 
-export { 
-  LoginSchema,
-  SignUpSchema,
-  emailSchema,
-};
+export { LoginSchema, SignUpSchema, emailSchema };

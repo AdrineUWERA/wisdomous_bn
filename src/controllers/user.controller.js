@@ -78,4 +78,10 @@ const loginWithGoogle = async (req, res, next) => {
   }
 };
 
-export { signup, login, loginWithGoogle };
+const getOneUser = asyncWrapper(async (req, res) => {
+  const user = await userServices.getUserById(req.params.id);
+
+  return res.status(200).json({ code: 200, message: "One User", user });
+});
+
+export { signup, login, loginWithGoogle, getOneUser };
