@@ -2,7 +2,8 @@ import { asyncWrapper } from "../helpers";
 import { promptServices } from "../services";
 
 const createSession = asyncWrapper(async (req, res) => {
-  const session = await promptServices.createOptimizationSession();
+  const userId = req.user.id;
+  const session = await promptServices.createOptimizationSession(userId);
 
   return res
     .status(201)
@@ -10,7 +11,6 @@ const createSession = asyncWrapper(async (req, res) => {
 });
 
 const updateSession = asyncWrapper(async (req, res) => {
-  console.log(req.body.prompts)
   const session = await promptServices.updateOptimizationSession(
     req.body.prompts,
     req.params.id

@@ -10,8 +10,8 @@ async function getAllSessions() {
   return session;
 }
 
-async function createOptimizationSession() {
-  const details = { prompts: [] };
+async function createOptimizationSession(userId) {
+  const details = { userId, prompts: [] };
   const session = await OptimizationSession.create(details);
   return session;
 }

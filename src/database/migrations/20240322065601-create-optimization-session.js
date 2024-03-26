@@ -10,6 +10,14 @@ const migration = {
         primaryKey: true,
         allowNull: false,
       },
+      userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: "users",
+          key: "id",
+        },
+      },
       prompts: {
         type: DataTypes.ARRAY(DataTypes.JSON),
         allowNull: false,

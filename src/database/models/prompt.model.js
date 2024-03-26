@@ -1,7 +1,8 @@
-import { Sequelize, DataTypes } from 'sequelize';
-import sequelize from '../config/db'
+import { DataTypes } from "sequelize";
+import sequelize from "../config/db";
+import User from "./user.model";
 
-const OptimizationSession = sequelize.define('optimizations', {
+const OptimizationSession = sequelize.define("optimizations", {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -13,6 +14,13 @@ const OptimizationSession = sequelize.define('optimizations', {
     allowNull: false,
     defaultValue: [],
   },
+});
+
+User.hasMany(OptimizationSession, {
+  as: "user",
+  foreignKey: "userId",
+  onDelete: "cascade",
+  onUpdate: "CASCADE",
 });
 
 export default OptimizationSession;

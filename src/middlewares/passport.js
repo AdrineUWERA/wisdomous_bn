@@ -25,7 +25,6 @@ passport.use(
         accessToken,
         refreshToken,
       };
-      console.log(user)
       done(null, user);
     }
   )
